@@ -46,7 +46,7 @@ main_frame.pack(pady=20, padx=20, fill="both", expand=True)
 header_label = ctk.CTkLabel(master=main_frame, text="URL Shortener", font=("Bahnschrift Bold", 40)).pack(pady=10)
 
 long_url = ctk.CTkEntry(master=main_frame, placeholder_text="  Your URL",fg_color="black",height=40, font=("Helvetica", 15,"bold"),border_width=0)
-long_url.pack(fill="x",pady=10,padx=20)
+long_url.pack(fill="x",pady=20,padx=20)
 
 generate_button = ctk.CTkButton(main_frame, text="Generate Short URL", width=100, height=30, font=("Helvetica", 15,"bold"),fg_color="White",text_color="black",command=url_shortener)
 generate_button.pack(pady=10)
