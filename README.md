@@ -1,5 +1,7 @@
 # 🔗 URL Shortener
 
+![screenshot](screenshot_for_readme.png)
+
 A sleek and modern desktop app built with Python and CustomTkinter that shortens long URLs using the TinyURL API. Paste, shorten, copy, and reset—all in one neat interface.
 
 ---
@@ -31,10 +33,6 @@ python url_shortener.py
 ```
 
 ---
-
-## 🖼️ Screenshot
-
-![screenshot](screenshot_for_readme.png)
 
 ---
 
