@@ -6,21 +6,26 @@ ctk.set_appearance_mode("system")
 ctk.set_default_color_theme("blue")
 
 def url_shortener():
-    shorten = pyshorteners.Shortener()              #ADD A PASTE BUTTON IN ENTRY FIELD.
-                                                   #look for areas to improve the code.
+    generate_button.configure(state="disabled", text="Working...")
+    root.after(100, perform_shortening)  # Delay slightly to let UI update
 
+def perform_shortening():
+    shorten = pyshorteners.Shortener() 
     long_url_value = long_url.get()
+
     if long_url_value:
         try:
             short_url = shorten.tinyurl.short(long_url_value)
             short_url_label.configure(text=short_url, text_color="white")
             copy_button.pack(side="right", padx=10, pady=10)
             copy_button.configure(command=copy_url)
-
-        except Exception as e:
+        except Exception:
             short_url_label.configure(text="Error: Invalid URL", text_color="red")
     else:
         short_url_label.configure(text="Please enter a URL", text_color="red")
+    
+    generate_button.configure(state="normal", text="Generate Short URL")
+
 
 def copy_url():
     short_url = short_url_label.cget("text")
@@ -53,7 +58,7 @@ header_label = ctk.CTkLabel(master=main_frame, text="URL Shortener", font=("Bahn
 entry_frame = ctk.CTkFrame(master=main_frame, fg_color="black", corner_radius=10)
 entry_frame.pack(pady=20, padx=20, fill="x")
 
-long_url = ctk.CTkEntry(master=entry_frame, placeholder_text="  Your URL",fg_color="black", font=("Helvetica", 15,"bold"),border_width=0)
+long_url = ctk.CTkEntry(master=entry_frame, placeholder_text="  Your URL",fg_color="black", font=("Helvetica", 15,"bold"),border_width=0,width=250)
 long_url.pack(fill="x",pady=10,padx=10,side="left")
 
 paste_button = ctk.CTkButton(master=entry_frame, text="Paste", width=100, height=30, font=("Helvetica", 15,"bold"),fg_color="White",text_color="black",command=paste)
